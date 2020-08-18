@@ -1,0 +1,1092 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{525FC9CD-3777-42D4-A909-118E7BA43CDD}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WorldGrammar</RootNamespace>
+    <AssemblyName>WorldGrammar</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <Use64BitIISExpress />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.AI.Agent.Intercept, Version=2.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.2.0.6\lib\net40\Microsoft.AI.Agent.Intercept.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.DependencyCollector, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.DependencyCollector.2.2.0\lib\net40\Microsoft.AI.DependencyCollector.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.PerfCounterCollector, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.PerfCounterCollector.2.2.0\lib\net40\Microsoft.AI.PerfCounterCollector.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.ServerTelemetryChannel, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.2.0\lib\net40\Microsoft.AI.ServerTelemetryChannel.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.Web, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Web.2.2.0\lib\net40\Microsoft.AI.Web.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.WindowsServer, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.2.2.0\lib\net40\Microsoft.AI.WindowsServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.ApplicationInsights, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.2.2.0\lib\net40\Microsoft.ApplicationInsights.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Diagnostics.Tracing.EventSource, Version=1.1.28.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Diagnostics.Tracing.EventSource.Redist.1.1.28\lib\net40\Microsoft.Diagnostics.Tracing.EventSource.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks, Version=1.0.12.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks.Extensions, Version=1.0.12.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.Extensions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks.Extensions.Desktop, Version=1.0.168.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.Extensions.Desktop.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.IO, Version=2.6.10.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.1.1.10\lib\net40\System.IO.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net" />
+    <Reference Include="System.Runtime, Version=2.6.10.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.1.1.10\lib\net40\System.Runtime.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Threading.Tasks, Version=2.6.10.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.1.1.10\lib\net40\System.Threading.Tasks.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Common\Common.js" />
+    <Content Include="Common\jquery.cookie.js" />
+    <Content Include="Common\Jquery1.12.4.js" />
+    <Content Include="Common\json2.js" />
+    <Content Include="Common\rc4.js" />
+    <Content Include="Css\Manage\Login.css" />
+    <Content Include="Css\Manage\MasterPage.css" />
+    <Content Include="Imgs\Icon\Sys.ico" />
+    <Content Include="Imgs\Jpg\LoginBg2.jpg" />
+    <Content Include="Imgs\Jpg\LoginBg1.jpg" />
+    <Content Include="Index.aspx" />
+    <Content Include="Js\Manage\GMTypeManage.js" />
+    <Content Include="Js\Manage\MyGMEdit.js" />
+    <Content Include="Js\Manage\MyGMManage.js" />
+    <Content Include="Js\Manage\RoleManage.js" />
+    <Content Include="Js\Manage\Regist.js" />
+    <Content Include="Js\Manage\MasterPage.js" />
+    <Content Include="Js\Manage\Login.js" />
+    <Content Include="Js\Manage\DicManage.js" />
+    <Content Include="Js\Manage\UserManage.js" />
+    <Content Include="Js\Manage\MenuManage.js" />
+    <Content Include="Pages\Manage\DicManage.aspx" />
+    <Content Include="Pages\Manage\GMTypeManage.aspx" />
+    <Content Include="Pages\Manage\MyGMEdit.aspx" />
+    <Content Include="Pages\Manage\MyGMManage.aspx" />
+    <Content Include="Pages\Manage\MenuManage.aspx" />
+    <Content Include="Pages\Manage\RoleManage.aspx" />
+    <Content Include="Pages\Manage\Regist.aspx" />
+    <Content Include="Pages\Manage\Login.aspx" />
+    <Content Include="Pages\Manage\UserManage.aspx" />
+    <Content Include="Plaugs\ajaxfileupload\ajaxfileupload.js" />
+    <Content Include="Plaugs\ajaxfileupload\jquery-1.11.3.js" />
+    <Content Include="Plaugs\bootstrap-3.3.7-dist\css\bootstrap-theme.css" />
+    <Content Include="Plaugs\bootstrap-3.3.7-dist\css\bootstrap-theme.min.css" />
+    <Content Include="Plaugs\bootstrap-3.3.7-dist\css\bootstrap.css" />
+    <Content Include="Plaugs\bootstrap-3.3.7-dist\css\bootstrap.min.css" />
+    <Content Include="Plaugs\bootstrap-3.3.7-dist\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Plaugs\bootstrap-3.3.7-dist\js\bootstrap.js" />
+    <Content Include="Plaugs\bootstrap-3.3.7-dist\js\bootstrap.min.js" />
+    <Content Include="Plaugs\bootstrap-3.3.7-dist\js\npm.js" />
+    <Content Include="Plaugs\bootstrap-datetimepicker-master\css\bootstrap-datetimepicker.css" />
+    <Content Include="Plaugs\bootstrap-datetimepicker-master\css\bootstrap-datetimepicker.min.css" />
+    <Content Include="Plaugs\bootstrap-datetimepicker-master\Gruntfile.js" />
+    <Content Include="Plaugs\bootstrap-datetimepicker-master\js\bootstrap-datetimepicker.js" />
+    <Content Include="Plaugs\bootstrap-datetimepicker-master\js\bootstrap-datetimepicker.min.js" />
+    <Content Include="Plaugs\bootstrap-datetimepicker-master\js\bootstrap-datetimepicker.zh-CN.js" />
+    <Content Include="Plaugs\bootstrap-datetimepicker-master\sample in bootstrap v2\bootstrap\css\bootstrap.css" />
+    <Content Include="Plaugs\bootstrap-datetimepicker-master\sample in bootstrap v2\bootstrap\css\bootstrap.min.css" />
+    <Content Include="Plaugs\bootstrap-datetimepicker-master\sample in bootstrap v2\bootstrap\img\glyphicons-halflings-white.png" />
+    <Content Include="Plaugs\bootstrap-datetimepicker-master\sample in bootstrap v2\bootstrap\img\glyphicons-halflings.png" />
+    <Content Include="Plaugs\bootstrap-datetimepicker-master\sample in bootstrap v2\bootstrap\js\bootstrap.js" />
+    <Content Include="Plaugs\bootstrap-datetimepicker-master\sample in bootstrap v2\bootstrap\js\bootstrap.min.js" />
+    <Content Include="Plaugs\bootstrap-datetimepicker-master\sample in bootstrap v2\index.html" />
+    <Content Include="Plaugs\bootstrap-datetimepicker-master\sample in bootstrap v2\jquery\jquery-1.8.3.min.js" />
+    <Content Include="Plaugs\bootstrap-datetimepicker-master\sample in bootstrap v3\bootstrap\css\bootstrap-theme.css" />
+    <Content Include="Plaugs\bootstrap-datetimepicker-master\sample in bootstrap v3\bootstrap\css\bootstrap-theme.min.css" />
+    <Content Include="Plaugs\bootstrap-datetimepicker-master\sample in bootstrap v3\bootstrap\css\bootstrap.css" />
+    <Content Include="Plaugs\bootstrap-datetimepicker-master\sample in bootstrap v3\bootstrap\css\bootstrap.min.css" />
+    <Content Include="Plaugs\bootstrap-datetimepicker-master\sample in bootstrap v3\bootstrap\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Plaugs\bootstrap-datetimepicker-master\sample in bootstrap v3\bootstrap\js\bootstrap.js" />
+    <Content Include="Plaugs\bootstrap-datetimepicker-master\sample in bootstrap v3\bootstrap\js\bootstrap.min.js" />
+    <Content Include="Plaugs\bootstrap-datetimepicker-master\sample in bootstrap v3\index.html" />
+    <Content Include="Plaugs\bootstrap-datetimepicker-master\sample in bootstrap v3\jquery\jquery-1.8.3.min.js" />
+    <Content Include="Plaugs\bootstrap-datetimepicker-master\screenshot\standard_day.png" />
+    <Content Include="Plaugs\bootstrap-datetimepicker-master\screenshot\standard_day_meridian.png" />
+    <Content Include="Plaugs\bootstrap-datetimepicker-master\screenshot\standard_decade.png" />
+    <Content Include="Plaugs\bootstrap-datetimepicker-master\screenshot\standard_full.png" />
+    <Content Include="Plaugs\bootstrap-datetimepicker-master\screenshot\standard_hour.png" />
+    <Content Include="Plaugs\bootstrap-datetimepicker-master\screenshot\standard_hour_meridian.png" />
+    <Content Include="Plaugs\bootstrap-datetimepicker-master\screenshot\standard_month.png" />
+    <Content Include="Plaugs\bootstrap-datetimepicker-master\screenshot\standard_year.png" />
+    <Content Include="Plaugs\bootstrap-datetimepicker-master\tests\assets\coverage.js" />
+    <Content Include="Plaugs\bootstrap-datetimepicker-master\tests\assets\jquery-1.7.1.min.js" />
+    <Content Include="Plaugs\bootstrap-datetimepicker-master\tests\assets\mock.js" />
+    <Content Include="Plaugs\bootstrap-datetimepicker-master\tests\assets\qunit-logging.js" />
+    <Content Include="Plaugs\bootstrap-datetimepicker-master\tests\assets\qunit.css" />
+    <Content Include="Plaugs\bootstrap-datetimepicker-master\tests\assets\qunit.js" />
+    <Content Include="Plaugs\bootstrap-datetimepicker-master\tests\assets\utils.js" />
+    <Content Include="Plaugs\bootstrap-datetimepicker-master\tests\run-qunit.js" />
+    <Content Include="Plaugs\bootstrap-datetimepicker-master\tests\suites\component.js" />
+    <Content Include="Plaugs\bootstrap-datetimepicker-master\tests\suites\events.js" />
+    <Content Include="Plaugs\bootstrap-datetimepicker-master\tests\suites\formats.js" />
+    <Content Include="Plaugs\bootstrap-datetimepicker-master\tests\suites\inline.js" />
+    <Content Include="Plaugs\bootstrap-datetimepicker-master\tests\suites\keyboard_navigation\2011.js" />
+    <Content Include="Plaugs\bootstrap-datetimepicker-master\tests\suites\keyboard_navigation\2012.js" />
+    <Content Include="Plaugs\bootstrap-datetimepicker-master\tests\suites\keyboard_navigation\all.js" />
+    <Content Include="Plaugs\bootstrap-datetimepicker-master\tests\suites\mouse_navigation\2011.js" />
+    <Content Include="Plaugs\bootstrap-datetimepicker-master\tests\suites\mouse_navigation\2012.js" />
+    <Content Include="Plaugs\bootstrap-datetimepicker-master\tests\suites\mouse_navigation\all.js" />
+    <Content Include="Plaugs\bootstrap-datetimepicker-master\tests\suites\options.js" />
+    <Content Include="Plaugs\bootstrap-datetimepicker-master\tests\tests.html" />
+    <Content Include="Plaugs\bootstrap-datetimepicker-master\tests\tests.min.html" />
+    <Content Include="Plaugs\bootstrap-datetimepicker-master\tests\_coverage.html" />
+    <Content Include="Plaugs\bootstrap-icheck\demo\css\banner.jpg" />
+    <Content Include="Plaugs\bootstrap-icheck\demo\css\custom.css" />
+    <Content Include="Plaugs\bootstrap-icheck\demo\css\icheck.png" />
+    <Content Include="Plaugs\bootstrap-icheck\demo\css\ie\arrow-bottom.png" />
+    <Content Include="Plaugs\bootstrap-icheck\demo\css\ie\arrow-top.png" />
+    <Content Include="Plaugs\bootstrap-icheck\demo\css\ie\header-line.png" />
+    <Content Include="Plaugs\bootstrap-icheck\demo\css\ie\icon-fork.png" />
+    <Content Include="Plaugs\bootstrap-icheck\demo\css\ie\icon-github.png" />
+    <Content Include="Plaugs\bootstrap-icheck\demo\css\ie\icon-lab.png" />
+    <Content Include="Plaugs\bootstrap-icheck\demo\css\ie\icon-options.png" />
+    <Content Include="Plaugs\bootstrap-icheck\demo\css\ie\icon-star.png" />
+    <Content Include="Plaugs\bootstrap-icheck\demo\css\montserrat-bold.svg" />
+    <Content Include="Plaugs\bootstrap-icheck\demo\css\montserrat-regular.svg" />
+    <Content Include="Plaugs\bootstrap-icheck\demo\css\normalize.css" />
+    <Content Include="Plaugs\bootstrap-icheck\demo\index.html" />
+    <Content Include="Plaugs\bootstrap-icheck\demo\js\custom.js" />
+    <Content Include="Plaugs\bootstrap-icheck\demo\js\custom.min.js" />
+    <Content Include="Plaugs\bootstrap-icheck\demo\js\jquery.js" />
+    <Content Include="Plaugs\bootstrap-icheck\demo\js\zepto.js" />
+    <Content Include="Plaugs\bootstrap-icheck\icheck.js" />
+    <Content Include="Plaugs\bootstrap-icheck\icheck.min.js" />
+    <Content Include="Plaugs\bootstrap-icheck\skins\all.css" />
+    <Content Include="Plaugs\bootstrap-icheck\skins\flat\aero%402x.png" />
+    <Content Include="Plaugs\bootstrap-icheck\skins\flat\aero.css" />
+    <Content Include="Plaugs\bootstrap-icheck\skins\flat\aero.png" />
+    <Content Include="Plaugs\bootstrap-icheck\skins\flat\blue%402x.png" />
+    <Content Include="Plaugs\bootstrap-icheck\skins\flat\blue.css" />
+    <Content Include="Plaugs\bootstrap-icheck\skins\flat\blue.png" />
+    <Content Include="Plaugs\bootstrap-icheck\skins\flat\flat%402x.png" />
+    <Content Include="Plaugs\bootstrap-icheck\skins\flat\flat.css" />
+    <Content Include="Plaugs\bootstrap-icheck\skins\flat\flat.png" />
+    <Content Include="Plaugs\bootstrap-icheck\skins\flat\green%402x.png" />
+    <Content Include="Plaugs\bootstrap-icheck\skins\flat\green.css" />
+    <Content Include="Plaugs\bootstrap-icheck\skins\flat\green.png" />
+    <Content Include="Plaugs\bootstrap-icheck\skins\flat\grey%402x.png" />
+    <Content Include="Plaugs\bootstrap-icheck\skins\flat\grey.css" />
+    <Content Include="Plaugs\bootstrap-icheck\skins\flat\grey.png" />
+    <Content Include="Plaugs\bootstrap-icheck\skins\flat\orange%402x.png" />
+    <Content Include="Plaugs\bootstrap-icheck\skins\flat\orange.css" />
+    <Content Include="Plaugs\bootstrap-icheck\skins\flat\orange.png" />
+    <Content Include="Plaugs\bootstrap-icheck\skins\flat\pink%402x.png" />
+    <Content Include="Plaugs\bootstrap-icheck\skins\flat\pink.css" />
+    <Content Include="Plaugs\bootstrap-icheck\skins\flat\pink.png" />
+    <Content Include="Plaugs\bootstrap-icheck\skins\flat\purple%402x.png" />
+    <Content Include="Plaugs\bootstrap-icheck\skins\flat\purple.css" />
+    <Content Include="Plaugs\bootstrap-icheck\skins\flat\purple.png" />
+    <Content Include="Plaugs\bootstrap-icheck\skins\flat\red%402x.png" />
+    <Content Include="Plaugs\bootstrap-icheck\skins\flat\red.css" />
+    <Content Include="Plaugs\bootstrap-icheck\skins\flat\red.png" />
+    <Content Include="Plaugs\bootstrap-icheck\skins\flat\yellow%402x.png" />
+    <Content Include="Plaugs\bootstrap-icheck\skins\flat\yellow.css" />
+    <Content Include="Plaugs\bootstrap-icheck\skins\flat\yellow.png" />
+    <Content Include="Plaugs\bootstrap-icheck\skins\flat\_all.css" />
+    <Content Include="Plaugs\bootstrap-icheck\skins\futurico\futurico%402x.png" />
+    <Content Include="Plaugs\bootstrap-icheck\skins\futurico\futurico.css" />
+    <Content Include="Plaugs\bootstrap-icheck\skins\futurico\futurico.png" />
+    <Content Include="Plaugs\bootstrap-icheck\skins\line\aero.css" />
+    <Content Include="Plaugs\bootstrap-icheck\skins\line\blue.css" />
+    <Content Include="Plaugs\bootstrap-icheck\skins\line\green.css" />
+    <Content Include="Plaugs\bootstrap-icheck\skins\line\grey.css" />
+    <Content Include="Plaugs\bootstrap-icheck\skins\line\line%402x.png" />
+    <Content Include="Plaugs\bootstrap-icheck\skins\line\line.css" />
+    <Content Include="Plaugs\bootstrap-icheck\skins\line\line.png" />
+    <Content Include="Plaugs\bootstrap-icheck\skins\line\orange.css" />
+    <Content Include="Plaugs\bootstrap-icheck\skins\line\pink.css" />
+    <Content Include="Plaugs\bootstrap-icheck\skins\line\purple.css" />
+    <Content Include="Plaugs\bootstrap-icheck\skins\line\red.css" />
+    <Content Include="Plaugs\bootstrap-icheck\skins\line\yellow.css" />
+    <Content Include="Plaugs\bootstrap-icheck\skins\line\_all.css" />
+    <Content Include="Plaugs\bootstrap-icheck\skins\minimal\aero%402x.png" />
+    <Content Include="Plaugs\bootstrap-icheck\skins\minimal\aero.css" />
+    <Content Include="Plaugs\bootstrap-icheck\skins\minimal\aero.png" />
+    <Content Include="Plaugs\bootstrap-icheck\skins\minimal\blue%402x.png" />
+    <Content Include="Plaugs\bootstrap-icheck\skins\minimal\blue.css" />
+    <Content Include="Plaugs\bootstrap-icheck\skins\minimal\blue.png" />
+    <Content Include="Plaugs\bootstrap-icheck\skins\minimal\green%402x.png" />
+    <Content Include="Plaugs\bootstrap-icheck\skins\minimal\green.css" />
+    <Content Include="Plaugs\bootstrap-icheck\skins\minimal\green.png" />
+    <Content Include="Plaugs\bootstrap-icheck\skins\minimal\grey%402x.png" />
+    <Content Include="Plaugs\bootstrap-icheck\skins\minimal\grey.css" />
+    <Content Include="Plaugs\bootstrap-icheck\skins\minimal\grey.png" />
+    <Content Include="Plaugs\bootstrap-icheck\skins\minimal\minimal%402x.png" />
+    <Content Include="Plaugs\bootstrap-icheck\skins\minimal\minimal.css" />
+    <Content Include="Plaugs\bootstrap-icheck\skins\minimal\minimal.png" />
+    <Content Include="Plaugs\bootstrap-icheck\skins\minimal\orange%402x.png" />
+    <Content Include="Plaugs\bootstrap-icheck\skins\minimal\orange.css" />
+    <Content Include="Plaugs\bootstrap-icheck\skins\minimal\orange.png" />
+    <Content Include="Plaugs\bootstrap-icheck\skins\minimal\pink%402x.png" />
+    <Content Include="Plaugs\bootstrap-icheck\skins\minimal\pink.css" />
+    <Content Include="Plaugs\bootstrap-icheck\skins\minimal\pink.png" />
+    <Content Include="Plaugs\bootstrap-icheck\skins\minimal\purple%402x.png" />
+    <Content Include="Plaugs\bootstrap-icheck\skins\minimal\purple.css" />
+    <Content Include="Plaugs\bootstrap-icheck\skins\minimal\purple.png" />
+    <Content Include="Plaugs\bootstrap-icheck\skins\minimal\red%402x.png" />
+    <Content Include="Plaugs\bootstrap-icheck\skins\minimal\red.css" />
+    <Content Include="Plaugs\bootstrap-icheck\skins\minimal\red.png" />
+    <Content Include="Plaugs\bootstrap-icheck\skins\minimal\yellow%402x.png" />
+    <Content Include="Plaugs\bootstrap-icheck\skins\minimal\yellow.css" />
+    <Content Include="Plaugs\bootstrap-icheck\skins\minimal\yellow.png" />
+    <Content Include="Plaugs\bootstrap-icheck\skins\minimal\_all.css" />
+    <Content Include="Plaugs\bootstrap-icheck\skins\polaris\polaris%402x.png" />
+    <Content Include="Plaugs\bootstrap-icheck\skins\polaris\polaris.css" />
+    <Content Include="Plaugs\bootstrap-icheck\skins\polaris\polaris.png" />
+    <Content Include="Plaugs\bootstrap-icheck\skins\square\aero%402x.png" />
+    <Content Include="Plaugs\bootstrap-icheck\skins\square\aero.css" />
+    <Content Include="Plaugs\bootstrap-icheck\skins\square\aero.png" />
+    <Content Include="Plaugs\bootstrap-icheck\skins\square\blue%402x.png" />
+    <Content Include="Plaugs\bootstrap-icheck\skins\square\blue.css" />
+    <Content Include="Plaugs\bootstrap-icheck\skins\square\blue.png" />
+    <Content Include="Plaugs\bootstrap-icheck\skins\square\green%402x.png" />
+    <Content Include="Plaugs\bootstrap-icheck\skins\square\green.css" />
+    <Content Include="Plaugs\bootstrap-icheck\skins\square\green.png" />
+    <Content Include="Plaugs\bootstrap-icheck\skins\square\grey%402x.png" />
+    <Content Include="Plaugs\bootstrap-icheck\skins\square\grey.css" />
+    <Content Include="Plaugs\bootstrap-icheck\skins\square\grey.png" />
+    <Content Include="Plaugs\bootstrap-icheck\skins\square\orange%402x.png" />
+    <Content Include="Plaugs\bootstrap-icheck\skins\square\orange.css" />
+    <Content Include="Plaugs\bootstrap-icheck\skins\square\orange.png" />
+    <Content Include="Plaugs\bootstrap-icheck\skins\square\pink%402x.png" />
+    <Content Include="Plaugs\bootstrap-icheck\skins\square\pink.css" />
+    <Content Include="Plaugs\bootstrap-icheck\skins\square\pink.png" />
+    <Content Include="Plaugs\bootstrap-icheck\skins\square\purple%402x.png" />
+    <Content Include="Plaugs\bootstrap-icheck\skins\square\purple.css" />
+    <Content Include="Plaugs\bootstrap-icheck\skins\square\purple.png" />
+    <Content Include="Plaugs\bootstrap-icheck\skins\square\red%402x.png" />
+    <Content Include="Plaugs\bootstrap-icheck\skins\square\red.css" />
+    <Content Include="Plaugs\bootstrap-icheck\skins\square\red.png" />
+    <Content Include="Plaugs\bootstrap-icheck\skins\square\square%402x.png" />
+    <Content Include="Plaugs\bootstrap-icheck\skins\square\square.css" />
+    <Content Include="Plaugs\bootstrap-icheck\skins\square\square.png" />
+    <Content Include="Plaugs\bootstrap-icheck\skins\square\yellow%402x.png" />
+    <Content Include="Plaugs\bootstrap-icheck\skins\square\yellow.css" />
+    <Content Include="Plaugs\bootstrap-icheck\skins\square\yellow.png" />
+    <Content Include="Plaugs\bootstrap-icheck\skins\square\_all.css" />
+    <Content Include="Plaugs\bootstrap-paginator-master\css\bootstrap-responsive.css" />
+    <Content Include="Plaugs\bootstrap-paginator-master\css\bootstrap-responsive.min.css" />
+    <Content Include="Plaugs\bootstrap-paginator-master\css\bootstrap.css" />
+    <Content Include="Plaugs\bootstrap-paginator-master\css\bootstrap.min.css" />
+    <Content Include="Plaugs\bootstrap-paginator-master\css\bootstrapv3.css" />
+    <Content Include="Plaugs\bootstrap-paginator-master\css\bootstrapv3.min.css" />
+    <Content Include="Plaugs\bootstrap-paginator-master\css\documentation.css" />
+    <Content Include="Plaugs\bootstrap-paginator-master\css\highlight.js\arta.css" />
+    <Content Include="Plaugs\bootstrap-paginator-master\css\highlight.js\ascetic.css" />
+    <Content Include="Plaugs\bootstrap-paginator-master\css\highlight.js\brown_paper.css" />
+    <Content Include="Plaugs\bootstrap-paginator-master\css\highlight.js\brown_papersq.png" />
+    <Content Include="Plaugs\bootstrap-paginator-master\css\highlight.js\dark.css" />
+    <Content Include="Plaugs\bootstrap-paginator-master\css\highlight.js\default.css" />
+    <Content Include="Plaugs\bootstrap-paginator-master\css\highlight.js\far.css" />
+    <Content Include="Plaugs\bootstrap-paginator-master\css\highlight.js\github.css" />
+    <Content Include="Plaugs\bootstrap-paginator-master\css\highlight.js\googlecode.css" />
+    <Content Include="Plaugs\bootstrap-paginator-master\css\highlight.js\idea.css" />
+    <Content Include="Plaugs\bootstrap-paginator-master\css\highlight.js\ir_black.css" />
+    <Content Include="Plaugs\bootstrap-paginator-master\css\highlight.js\magula.css" />
+    <Content Include="Plaugs\bootstrap-paginator-master\css\highlight.js\monokai.css" />
+    <Content Include="Plaugs\bootstrap-paginator-master\css\highlight.js\pojoaque.css" />
+    <Content Include="Plaugs\bootstrap-paginator-master\css\highlight.js\pojoaque.jpg" />
+    <Content Include="Plaugs\bootstrap-paginator-master\css\highlight.js\rainbow.css" />
+    <Content Include="Plaugs\bootstrap-paginator-master\css\highlight.js\school_book.css" />
+    <Content Include="Plaugs\bootstrap-paginator-master\css\highlight.js\school_book.png" />
+    <Content Include="Plaugs\bootstrap-paginator-master\css\highlight.js\solarized_dark.css" />
+    <Content Include="Plaugs\bootstrap-paginator-master\css\highlight.js\solarized_light.css" />
+    <Content Include="Plaugs\bootstrap-paginator-master\css\highlight.js\sunburst.css" />
+    <Content Include="Plaugs\bootstrap-paginator-master\css\highlight.js\tomorrow-night-blue.css" />
+    <Content Include="Plaugs\bootstrap-paginator-master\css\highlight.js\tomorrow-night-bright.css" />
+    <Content Include="Plaugs\bootstrap-paginator-master\css\highlight.js\tomorrow-night-eighties.css" />
+    <Content Include="Plaugs\bootstrap-paginator-master\css\highlight.js\tomorrow-night.css" />
+    <Content Include="Plaugs\bootstrap-paginator-master\css\highlight.js\tomorrow.css" />
+    <Content Include="Plaugs\bootstrap-paginator-master\css\highlight.js\vs.css" />
+    <Content Include="Plaugs\bootstrap-paginator-master\css\highlight.js\xcode.css" />
+    <Content Include="Plaugs\bootstrap-paginator-master\css\highlight.js\zenburn.css" />
+    <Content Include="Plaugs\bootstrap-paginator-master\css\qunit-1.11.0.css" />
+    <Content Include="Plaugs\bootstrap-paginator-master\lib\bootstrap.js" />
+    <Content Include="Plaugs\bootstrap-paginator-master\lib\bootstrap.min.js" />
+    <Content Include="Plaugs\bootstrap-paginator-master\lib\bootstrapv3.js" />
+    <Content Include="Plaugs\bootstrap-paginator-master\lib\highlight.pack.js" />
+    <Content Include="Plaugs\bootstrap-paginator-master\lib\jquery-1.9.1.min.js" />
+    <Content Include="Plaugs\bootstrap-paginator-master\lib\jquery.history.js" />
+    <Content Include="Plaugs\bootstrap-paginator-master\lib\qunit-1.11.0.js" />
+    <Content Include="Plaugs\bootstrap-paginator-master\src\bootstrap-paginator.js" />
+    <Content Include="Plaugs\bootstrap-table-master\dist\bootstrap-table-locale-all.js" />
+    <Content Include="Plaugs\bootstrap-table-master\dist\bootstrap-table-locale-all.min.js" />
+    <Content Include="Plaugs\bootstrap-table-master\dist\bootstrap-table.css" />
+    <Content Include="Plaugs\bootstrap-table-master\dist\bootstrap-table.js" />
+    <Content Include="Plaugs\bootstrap-table-master\dist\bootstrap-table.min.css" />
+    <Content Include="Plaugs\bootstrap-table-master\dist\bootstrap-table.min.js" />
+    <Content Include="Plaugs\bootstrap-table-master\dist\extensions\accent-neutralise\bootstrap-table-accent-neutralise.js" />
+    <Content Include="Plaugs\bootstrap-table-master\dist\extensions\accent-neutralise\bootstrap-table-accent-neutralise.min.js" />
+    <Content Include="Plaugs\bootstrap-table-master\dist\extensions\angular\bootstrap-table-angular.js" />
+    <Content Include="Plaugs\bootstrap-table-master\dist\extensions\angular\bootstrap-table-angular.min.js" />
+    <Content Include="Plaugs\bootstrap-table-master\dist\extensions\auto-refresh\bootstrap-table-auto-refresh.css" />
+    <Content Include="Plaugs\bootstrap-table-master\dist\extensions\auto-refresh\bootstrap-table-auto-refresh.js" />
+    <Content Include="Plaugs\bootstrap-table-master\dist\extensions\auto-refresh\bootstrap-table-auto-refresh.min.js" />
+    <Content Include="Plaugs\bootstrap-table-master\dist\extensions\click-edit-row\bootstrap-table-click-edit-row.css" />
+    <Content Include="Plaugs\bootstrap-table-master\dist\extensions\click-edit-row\bootstrap-table-click-edit-row.js" />
+    <Content Include="Plaugs\bootstrap-table-master\dist\extensions\click-edit-row\bootstrap-table-click-edit-row.min.js" />
+    <Content Include="Plaugs\bootstrap-table-master\dist\extensions\cookie\bootstrap-table-cookie.js" />
+    <Content Include="Plaugs\bootstrap-table-master\dist\extensions\cookie\bootstrap-table-cookie.min.js" />
+    <Content Include="Plaugs\bootstrap-table-master\dist\extensions\copy-rows\bootstrap-table-copy-rows.js" />
+    <Content Include="Plaugs\bootstrap-table-master\dist\extensions\copy-rows\bootstrap-table-copy-rows.min.js" />
+    <Content Include="Plaugs\bootstrap-table-master\dist\extensions\editable\bootstrap-table-editable.js" />
+    <Content Include="Plaugs\bootstrap-table-master\dist\extensions\editable\bootstrap-table-editable.min.js" />
+    <Content Include="Plaugs\bootstrap-table-master\dist\extensions\export\bootstrap-table-export.js" />
+    <Content Include="Plaugs\bootstrap-table-master\dist\extensions\export\bootstrap-table-export.min.js" />
+    <Content Include="Plaugs\bootstrap-table-master\dist\extensions\filter-control\bootstrap-table-filter-control.css" />
+    <Content Include="Plaugs\bootstrap-table-master\dist\extensions\filter-control\bootstrap-table-filter-control.js" />
+    <Content Include="Plaugs\bootstrap-table-master\dist\extensions\filter-control\bootstrap-table-filter-control.min.js" />
+    <Content Include="Plaugs\bootstrap-table-master\dist\extensions\filter\bootstrap-table-filter.js" />
+    <Content Include="Plaugs\bootstrap-table-master\dist\extensions\filter\bootstrap-table-filter.min.js" />
+    <Content Include="Plaugs\bootstrap-table-master\dist\extensions\flat-json\bootstrap-table-flat-json.js" />
+    <Content Include="Plaugs\bootstrap-table-master\dist\extensions\flat-json\bootstrap-table-flat-json.min.js" />
+    <Content Include="Plaugs\bootstrap-table-master\dist\extensions\group-by-v2\bootstrap-table-group-by.css" />
+    <Content Include="Plaugs\bootstrap-table-master\dist\extensions\group-by-v2\bootstrap-table-group-by.js" />
+    <Content Include="Plaugs\bootstrap-table-master\dist\extensions\group-by-v2\bootstrap-table-group-by.min.js" />
+    <Content Include="Plaugs\bootstrap-table-master\dist\extensions\group-by\bootstrap-table-group-by.css" />
+    <Content Include="Plaugs\bootstrap-table-master\dist\extensions\group-by\bootstrap-table-group-by.js" />
+    <Content Include="Plaugs\bootstrap-table-master\dist\extensions\group-by\bootstrap-table-group-by.min.js" />
+    <Content Include="Plaugs\bootstrap-table-master\dist\extensions\i18n-enhance\bootstrap-table-i18n-enhance.js" />
+    <Content Include="Plaugs\bootstrap-table-master\dist\extensions\i18n-enhance\bootstrap-table-i18n-enhance.min.js" />
+    <Content Include="Plaugs\bootstrap-table-master\dist\extensions\key-events\bootstrap-table-key-events.js" />
+    <Content Include="Plaugs\bootstrap-table-master\dist\extensions\key-events\bootstrap-table-key-events.min.js" />
+    <Content Include="Plaugs\bootstrap-table-master\dist\extensions\mobile\bootstrap-table-mobile.js" />
+    <Content Include="Plaugs\bootstrap-table-master\dist\extensions\mobile\bootstrap-table-mobile.min.js" />
+    <Content Include="Plaugs\bootstrap-table-master\dist\extensions\multi-column-toggle\bootstrap-table-multi-toggle.js" />
+    <Content Include="Plaugs\bootstrap-table-master\dist\extensions\multi-column-toggle\bootstrap-table-multi-toggle.min.js" />
+    <Content Include="Plaugs\bootstrap-table-master\dist\extensions\multiple-search\bootstrap-table-multiple-search.js" />
+    <Content Include="Plaugs\bootstrap-table-master\dist\extensions\multiple-search\bootstrap-table-multiple-search.min.js" />
+    <Content Include="Plaugs\bootstrap-table-master\dist\extensions\multiple-selection-row\bootstrap-table-multiple-selection-row.css" />
+    <Content Include="Plaugs\bootstrap-table-master\dist\extensions\multiple-selection-row\bootstrap-table-multiple-selection-row.js" />
+    <Content Include="Plaugs\bootstrap-table-master\dist\extensions\multiple-selection-row\bootstrap-table-multiple-selection-row.min.js" />
+    <Content Include="Plaugs\bootstrap-table-master\dist\extensions\multiple-sort\bootstrap-table-multiple-sort.js" />
+    <Content Include="Plaugs\bootstrap-table-master\dist\extensions\multiple-sort\bootstrap-table-multiple-sort.min.js" />
+    <Content Include="Plaugs\bootstrap-table-master\dist\extensions\natural-sorting\bootstrap-table-natural-sorting.js" />
+    <Content Include="Plaugs\bootstrap-table-master\dist\extensions\natural-sorting\bootstrap-table-natural-sorting.min.js" />
+    <Content Include="Plaugs\bootstrap-table-master\dist\extensions\print\bootstrap-table-print.js" />
+    <Content Include="Plaugs\bootstrap-table-master\dist\extensions\print\bootstrap-table-print.min.js" />
+    <Content Include="Plaugs\bootstrap-table-master\dist\extensions\reorder-columns\bootstrap-table-reorder-columns.js" />
+    <Content Include="Plaugs\bootstrap-table-master\dist\extensions\reorder-columns\bootstrap-table-reorder-columns.min.js" />
+    <Content Include="Plaugs\bootstrap-table-master\dist\extensions\reorder-rows\bootstrap-table-reorder-rows.css" />
+    <Content Include="Plaugs\bootstrap-table-master\dist\extensions\reorder-rows\bootstrap-table-reorder-rows.js" />
+    <Content Include="Plaugs\bootstrap-table-master\dist\extensions\reorder-rows\bootstrap-table-reorder-rows.min.js" />
+    <Content Include="Plaugs\bootstrap-table-master\dist\extensions\resizable\bootstrap-table-resizable.js" />
+    <Content Include="Plaugs\bootstrap-table-master\dist\extensions\resizable\bootstrap-table-resizable.min.js" />
+    <Content Include="Plaugs\bootstrap-table-master\dist\extensions\select2-filter\bootstrap-table-select2-filter.js" />
+    <Content Include="Plaugs\bootstrap-table-master\dist\extensions\select2-filter\bootstrap-table-select2-filter.min.js" />
+    <Content Include="Plaugs\bootstrap-table-master\dist\extensions\sticky-header\bootstrap-table-sticky-header.css" />
+    <Content Include="Plaugs\bootstrap-table-master\dist\extensions\sticky-header\bootstrap-table-sticky-header.js" />
+    <Content Include="Plaugs\bootstrap-table-master\dist\extensions\sticky-header\bootstrap-table-sticky-header.min.js" />
+    <Content Include="Plaugs\bootstrap-table-master\dist\extensions\toolbar\bootstrap-table-toolbar.js" />
+    <Content Include="Plaugs\bootstrap-table-master\dist\extensions\toolbar\bootstrap-table-toolbar.min.js" />
+    <Content Include="Plaugs\bootstrap-table-master\dist\extensions\tree-column\bootstrap-table-tree-column.css" />
+    <Content Include="Plaugs\bootstrap-table-master\dist\extensions\tree-column\bootstrap-table-tree-column.js" />
+    <Content Include="Plaugs\bootstrap-table-master\dist\extensions\tree-column\bootstrap-table-tree-column.min.js" />
+    <Content Include="Plaugs\bootstrap-table-master\dist\locale\bootstrap-table-af-ZA.js" />
+    <Content Include="Plaugs\bootstrap-table-master\dist\locale\bootstrap-table-af-ZA.min.js" />
+    <Content Include="Plaugs\bootstrap-table-master\dist\locale\bootstrap-table-ar-SA.js" />
+    <Content Include="Plaugs\bootstrap-table-master\dist\locale\bootstrap-table-ar-SA.min.js" />
+    <Content Include="Plaugs\bootstrap-table-master\dist\locale\bootstrap-table-ca-ES.js" />
+    <Content Include="Plaugs\bootstrap-table-master\dist\locale\bootstrap-table-ca-ES.min.js" />
+    <Content Include="Plaugs\bootstrap-table-master\dist\locale\bootstrap-table-cs-CZ.js" />
+    <Content Include="Plaugs\bootstrap-table-master\dist\locale\bootstrap-table-cs-CZ.min.js" />
+    <Content Include="Plaugs\bootstrap-table-master\dist\locale\bootstrap-table-da-DK.js" />
+    <Content Include="Plaugs\bootstrap-table-master\dist\locale\bootstrap-table-da-DK.min.js" />
+    <Content Include="Plaugs\bootstrap-table-master\dist\locale\bootstrap-table-de-DE.js" />
+    <Content Include="Plaugs\bootstrap-table-master\dist\locale\bootstrap-table-de-DE.min.js" />
+    <Content Include="Plaugs\bootstrap-table-master\dist\locale\bootstrap-table-el-GR.js" />
+    <Content Include="Plaugs\bootstrap-table-master\dist\locale\bootstrap-table-el-GR.min.js" />
+    <Content Include="Plaugs\bootstrap-table-master\dist\locale\bootstrap-table-en-US.js" />
+    <Content Include="Plaugs\bootstrap-table-master\dist\locale\bootstrap-table-en-US.min.js" />
+    <Content Include="Plaugs\bootstrap-table-master\dist\locale\bootstrap-table-es-AR.js" />
+    <Content Include="Plaugs\bootstrap-table-master\dist\locale\bootstrap-table-es-AR.min.js" />
+    <Content Include="Plaugs\bootstrap-table-master\dist\locale\bootstrap-table-es-CL.js" />
+    <Content Include="Plaugs\bootstrap-table-master\dist\locale\bootstrap-table-es-CL.min.js" />
+    <Content Include="Plaugs\bootstrap-table-master\dist\locale\bootstrap-table-es-CR.js" />
+    <Content Include="Plaugs\bootstrap-table-master\dist\locale\bootstrap-table-es-CR.min.js" />
+    <Content Include="Plaugs\bootstrap-table-master\dist\locale\bootstrap-table-es-ES.js" />
+    <Content Include="Plaugs\bootstrap-table-master\dist\locale\bootstrap-table-es-ES.min.js" />
+    <Content Include="Plaugs\bootstrap-table-master\dist\locale\bootstrap-table-es-MX.js" />
+    <Content Include="Plaugs\bootstrap-table-master\dist\locale\bootstrap-table-es-MX.min.js" />
+    <Content Include="Plaugs\bootstrap-table-master\dist\locale\bootstrap-table-es-NI.js" />
+    <Content Include="Plaugs\bootstrap-table-master\dist\locale\bootstrap-table-es-NI.min.js" />
+    <Content Include="Plaugs\bootstrap-table-master\dist\locale\bootstrap-table-es-SP.js" />
+    <Content Include="Plaugs\bootstrap-table-master\dist\locale\bootstrap-table-es-SP.min.js" />
+    <Content Include="Plaugs\bootstrap-table-master\dist\locale\bootstrap-table-et-EE.js" />
+    <Content Include="Plaugs\bootstrap-table-master\dist\locale\bootstrap-table-et-EE.min.js" />
+    <Content Include="Plaugs\bootstrap-table-master\dist\locale\bootstrap-table-fa-IR.js" />
+    <Content Include="Plaugs\bootstrap-table-master\dist\locale\bootstrap-table-fa-IR.min.js" />
+    <Content Include="Plaugs\bootstrap-table-master\dist\locale\bootstrap-table-fr-BE.js" />
+    <Content Include="Plaugs\bootstrap-table-master\dist\locale\bootstrap-table-fr-BE.min.js" />
+    <Content Include="Plaugs\bootstrap-table-master\dist\locale\bootstrap-table-fr-FR.js" />
+    <Content Include="Plaugs\bootstrap-table-master\dist\locale\bootstrap-table-fr-FR.min.js" />
+    <Content Include="Plaugs\bootstrap-table-master\dist\locale\bootstrap-table-he-IL.js" />
+    <Content Include="Plaugs\bootstrap-table-master\dist\locale\bootstrap-table-he-IL.min.js" />
+    <Content Include="Plaugs\bootstrap-table-master\dist\locale\bootstrap-table-hr-HR.js" />
+    <Content Include="Plaugs\bootstrap-table-master\dist\locale\bootstrap-table-hr-HR.min.js" />
+    <Content Include="Plaugs\bootstrap-table-master\dist\locale\bootstrap-table-hu-HU.js" />
+    <Content Include="Plaugs\bootstrap-table-master\dist\locale\bootstrap-table-hu-HU.min.js" />
+    <Content Include="Plaugs\bootstrap-table-master\dist\locale\bootstrap-table-id-ID.js" />
+    <Content Include="Plaugs\bootstrap-table-master\dist\locale\bootstrap-table-id-ID.min.js" />
+    <Content Include="Plaugs\bootstrap-table-master\dist\locale\bootstrap-table-it-IT.js" />
+    <Content Include="Plaugs\bootstrap-table-master\dist\locale\bootstrap-table-it-IT.min.js" />
+    <Content Include="Plaugs\bootstrap-table-master\dist\locale\bootstrap-table-ja-JP.js" />
+    <Content Include="Plaugs\bootstrap-table-master\dist\locale\bootstrap-table-ja-JP.min.js" />
+    <Content Include="Plaugs\bootstrap-table-master\dist\locale\bootstrap-table-ka-GE.js" />
+    <Content Include="Plaugs\bootstrap-table-master\dist\locale\bootstrap-table-ka-GE.min.js" />
+    <Content Include="Plaugs\bootstrap-table-master\dist\locale\bootstrap-table-ko-KR.js" />
+    <Content Include="Plaugs\bootstrap-table-master\dist\locale\bootstrap-table-ko-KR.min.js" />
+    <Content Include="Plaugs\bootstrap-table-master\dist\locale\bootstrap-table-ms-MY.js" />
+    <Content Include="Plaugs\bootstrap-table-master\dist\locale\bootstrap-table-ms-MY.min.js" />
+    <Content Include="Plaugs\bootstrap-table-master\dist\locale\bootstrap-table-nb-NO.js" />
+    <Content Include="Plaugs\bootstrap-table-master\dist\locale\bootstrap-table-nb-NO.min.js" />
+    <Content Include="Plaugs\bootstrap-table-master\dist\locale\bootstrap-table-nl-NL.js" />
+    <Content Include="Plaugs\bootstrap-table-master\dist\locale\bootstrap-table-nl-NL.min.js" />
+    <Content Include="Plaugs\bootstrap-table-master\dist\locale\bootstrap-table-pl-PL.js" />
+    <Content Include="Plaugs\bootstrap-table-master\dist\locale\bootstrap-table-pl-PL.min.js" />
+    <Content Include="Plaugs\bootstrap-table-master\dist\locale\bootstrap-table-pt-BR.js" />
+    <Content Include="Plaugs\bootstrap-table-master\dist\locale\bootstrap-table-pt-BR.min.js" />
+    <Content Include="Plaugs\bootstrap-table-master\dist\locale\bootstrap-table-pt-PT.js" />
+    <Content Include="Plaugs\bootstrap-table-master\dist\locale\bootstrap-table-pt-PT.min.js" />
+    <Content Include="Plaugs\bootstrap-table-master\dist\locale\bootstrap-table-ro-RO.js" />
+    <Content Include="Plaugs\bootstrap-table-master\dist\locale\bootstrap-table-ro-RO.min.js" />
+    <Content Include="Plaugs\bootstrap-table-master\dist\locale\bootstrap-table-ru-RU.js" />
+    <Content Include="Plaugs\bootstrap-table-master\dist\locale\bootstrap-table-ru-RU.min.js" />
+    <Content Include="Plaugs\bootstrap-table-master\dist\locale\bootstrap-table-sk-SK.js" />
+    <Content Include="Plaugs\bootstrap-table-master\dist\locale\bootstrap-table-sk-SK.min.js" />
+    <Content Include="Plaugs\bootstrap-table-master\dist\locale\bootstrap-table-sv-SE.js" />
+    <Content Include="Plaugs\bootstrap-table-master\dist\locale\bootstrap-table-sv-SE.min.js" />
+    <Content Include="Plaugs\bootstrap-table-master\dist\locale\bootstrap-table-th-TH.js" />
+    <Content Include="Plaugs\bootstrap-table-master\dist\locale\bootstrap-table-th-TH.min.js" />
+    <Content Include="Plaugs\bootstrap-table-master\dist\locale\bootstrap-table-tr-TR.js" />
+    <Content Include="Plaugs\bootstrap-table-master\dist\locale\bootstrap-table-tr-TR.min.js" />
+    <Content Include="Plaugs\bootstrap-table-master\dist\locale\bootstrap-table-uk-UA.js" />
+    <Content Include="Plaugs\bootstrap-table-master\dist\locale\bootstrap-table-uk-UA.min.js" />
+    <Content Include="Plaugs\bootstrap-table-master\dist\locale\bootstrap-table-ur-PK.js" />
+    <Content Include="Plaugs\bootstrap-table-master\dist\locale\bootstrap-table-ur-PK.min.js" />
+    <Content Include="Plaugs\bootstrap-table-master\dist\locale\bootstrap-table-uz-Latn-UZ.js" />
+    <Content Include="Plaugs\bootstrap-table-master\dist\locale\bootstrap-table-uz-Latn-UZ.min.js" />
+    <Content Include="Plaugs\bootstrap-table-master\dist\locale\bootstrap-table-vi-VN.js" />
+    <Content Include="Plaugs\bootstrap-table-master\dist\locale\bootstrap-table-vi-VN.min.js" />
+    <Content Include="Plaugs\bootstrap-table-master\dist\locale\bootstrap-table-zh-CN.js" />
+    <Content Include="Plaugs\bootstrap-table-master\dist\locale\bootstrap-table-zh-CN.min.js" />
+    <Content Include="Plaugs\bootstrap-table-master\dist\locale\bootstrap-table-zh-TW.js" />
+    <Content Include="Plaugs\bootstrap-table-master\dist\locale\bootstrap-table-zh-TW.min.js" />
+    <Content Include="Plaugs\bootstrap-treeview\css\bootstrap-treeview.css" />
+    <Content Include="Plaugs\bootstrap-treeview\css\bootstrap-treeview.min.css" />
+    <Content Include="Plaugs\bootstrap-treeview\css\default.css" />
+    <Content Include="Plaugs\bootstrap-treeview\css\normalize.css" />
+    <Content Include="Plaugs\bootstrap-treeview\dist\bootstrap-treeview.min.css" />
+    <Content Include="Plaugs\bootstrap-treeview\dist\bootstrap-treeview.min.js" />
+    <Content Include="Plaugs\bootstrap-treeview\example-dom.html" />
+    <Content Include="Plaugs\bootstrap-treeview\index.html" />
+    <Content Include="Plaugs\bootstrap-treeview\js\bootstrap-treeview.js" />
+    <Content Include="Plaugs\bootstrap-treeview\www.jq22.com.txt" />
+    <Content Include="Plaugs\bootstrap-validator\demo\ajaxSubmit.html" />
+    <Content Include="Plaugs\bootstrap-validator\demo\attribute.html" />
+    <Content Include="Plaugs\bootstrap-validator\demo\choice.html" />
+    <Content Include="Plaugs\bootstrap-validator\demo\collapse.html" />
+    <Content Include="Plaugs\bootstrap-validator\demo\container.html" />
+    <Content Include="Plaugs\bootstrap-validator\demo\container2.html" />
+    <Content Include="Plaugs\bootstrap-validator\demo\container3.html" />
+    <Content Include="Plaugs\bootstrap-validator\demo\container4.html" />
+    <Content Include="Plaugs\bootstrap-validator\demo\date.html" />
+    <Content Include="Plaugs\bootstrap-validator\demo\defaultMessage.html" />
+    <Content Include="Plaugs\bootstrap-validator\demo\dynamic.html" />
+    <Content Include="Plaugs\bootstrap-validator\demo\dynamic2.html" />
+    <Content Include="Plaugs\bootstrap-validator\demo\dynamic3.html" />
+    <Content Include="Plaugs\bootstrap-validator\demo\dynamic4.html" />
+    <Content Include="Plaugs\bootstrap-validator\demo\enable.html" />
+    <Content Include="Plaugs\bootstrap-validator\demo\enable2.html" />
+    <Content Include="Plaugs\bootstrap-validator\demo\event.html" />
+    <Content Include="Plaugs\bootstrap-validator\demo\event2.html" />
+    <Content Include="Plaugs\bootstrap-validator\demo\event3.html" />
+    <Content Include="Plaugs\bootstrap-validator\demo\feedbackIcons.html" />
+    <Content Include="Plaugs\bootstrap-validator\demo\file.html" />
+    <Content Include="Plaugs\bootstrap-validator\demo\group.html" />
+    <Content Include="Plaugs\bootstrap-validator\demo\html5.html" />
+    <Content Include="Plaugs\bootstrap-validator\demo\i18n.html" />
+    <Content Include="Plaugs\bootstrap-validator\demo\index.html" />
+    <Content Include="Plaugs\bootstrap-validator\demo\invisible.html" />
+    <Content Include="Plaugs\bootstrap-validator\demo\message.html" />
+    <Content Include="Plaugs\bootstrap-validator\demo\multiple.html" />
+    <Content Include="Plaugs\bootstrap-validator\demo\remote.html" />
+    <Content Include="Plaugs\bootstrap-validator\demo\reset.html" />
+    <Content Include="Plaugs\bootstrap-validator\demo\selector.html" />
+    <Content Include="Plaugs\bootstrap-validator\demo\selector2.html" />
+    <Content Include="Plaugs\bootstrap-validator\demo\specialName.html" />
+    <Content Include="Plaugs\bootstrap-validator\demo\submitHandler.html" />
+    <Content Include="Plaugs\bootstrap-validator\demo\tab.html" />
+    <Content Include="Plaugs\bootstrap-validator\demo\tooltip.html" />
+    <Content Include="Plaugs\bootstrap-validator\demo\validators.html" />
+    <Content Include="Plaugs\bootstrap-validator\dist\css\bootstrapValidator.css" />
+    <Content Include="Plaugs\bootstrap-validator\dist\css\bootstrapValidator.min.css" />
+    <Content Include="Plaugs\bootstrap-validator\dist\js\bootstrapValidator.js" />
+    <Content Include="Plaugs\bootstrap-validator\dist\js\bootstrapValidator.min.js" />
+    <Content Include="Plaugs\bootstrap-validator\dist\js\language\ar_MA.js" />
+    <Content Include="Plaugs\bootstrap-validator\dist\js\language\be_FR.js" />
+    <Content Include="Plaugs\bootstrap-validator\dist\js\language\be_NL.js" />
+    <Content Include="Plaugs\bootstrap-validator\dist\js\language\bg_BG.js" />
+    <Content Include="Plaugs\bootstrap-validator\dist\js\language\cs_CZ.js" />
+    <Content Include="Plaugs\bootstrap-validator\dist\js\language\da_DK.js" />
+    <Content Include="Plaugs\bootstrap-validator\dist\js\language\de_DE.js" />
+    <Content Include="Plaugs\bootstrap-validator\dist\js\language\en_US.js" />
+    <Content Include="Plaugs\bootstrap-validator\dist\js\language\es_CL.js" />
+    <Content Include="Plaugs\bootstrap-validator\dist\js\language\es_ES.js" />
+    <Content Include="Plaugs\bootstrap-validator\dist\js\language\fa_IR.js" />
+    <Content Include="Plaugs\bootstrap-validator\dist\js\language\fr_FR.js" />
+    <Content Include="Plaugs\bootstrap-validator\dist\js\language\gr_EL.js" />
+    <Content Include="Plaugs\bootstrap-validator\dist\js\language\he_IL.js" />
+    <Content Include="Plaugs\bootstrap-validator\dist\js\language\hu_HU.js" />
+    <Content Include="Plaugs\bootstrap-validator\dist\js\language\id_ID.js" />
+    <Content Include="Plaugs\bootstrap-validator\dist\js\language\it_IT.js" />
+    <Content Include="Plaugs\bootstrap-validator\dist\js\language\ja_JP.js" />
+    <Content Include="Plaugs\bootstrap-validator\dist\js\language\nl_NL.js" />
+    <Content Include="Plaugs\bootstrap-validator\dist\js\language\no_NO.js" />
+    <Content Include="Plaugs\bootstrap-validator\dist\js\language\pl_PL.js" />
+    <Content Include="Plaugs\bootstrap-validator\dist\js\language\pt_BR.js" />
+    <Content Include="Plaugs\bootstrap-validator\dist\js\language\pt_PT.js" />
+    <Content Include="Plaugs\bootstrap-validator\dist\js\language\ro_RO.js" />
+    <Content Include="Plaugs\bootstrap-validator\dist\js\language\ru_RU.js" />
+    <Content Include="Plaugs\bootstrap-validator\dist\js\language\sq_AL.js" />
+    <Content Include="Plaugs\bootstrap-validator\dist\js\language\sr_RS.js" />
+    <Content Include="Plaugs\bootstrap-validator\dist\js\language\sv_SE.js" />
+    <Content Include="Plaugs\bootstrap-validator\dist\js\language\th_TH.js" />
+    <Content Include="Plaugs\bootstrap-validator\dist\js\language\tr_TR.js" />
+    <Content Include="Plaugs\bootstrap-validator\dist\js\language\ua_UA.js" />
+    <Content Include="Plaugs\bootstrap-validator\dist\js\language\vi_VN.js" />
+    <Content Include="Plaugs\bootstrap-validator\dist\js\language\zh_CN.js" />
+    <Content Include="Plaugs\bootstrap-validator\dist\js\language\zh_TW.js" />
+    <Content Include="Plaugs\bootstrap-validator\Gruntfile.js" />
+    <Content Include="Plaugs\bootstrap-validator\LICENSE.txt" />
+    <Content Include="Plaugs\bootstrap-validator\screenshots\demo.gif" />
+    <Content Include="Plaugs\bootstrap-validator\src\css\bootstrapValidator.css" />
+    <Content Include="Plaugs\bootstrap-validator\src\js\bootstrapValidator.js" />
+    <Content Include="Plaugs\bootstrap-validator\src\js\language\ar_MA.js" />
+    <Content Include="Plaugs\bootstrap-validator\src\js\language\be_FR.js" />
+    <Content Include="Plaugs\bootstrap-validator\src\js\language\be_NL.js" />
+    <Content Include="Plaugs\bootstrap-validator\src\js\language\bg_BG.js" />
+    <Content Include="Plaugs\bootstrap-validator\src\js\language\cs_CZ.js" />
+    <Content Include="Plaugs\bootstrap-validator\src\js\language\da_DK.js" />
+    <Content Include="Plaugs\bootstrap-validator\src\js\language\de_DE.js" />
+    <Content Include="Plaugs\bootstrap-validator\src\js\language\en_US.js" />
+    <Content Include="Plaugs\bootstrap-validator\src\js\language\es_CL.js" />
+    <Content Include="Plaugs\bootstrap-validator\src\js\language\es_ES.js" />
+    <Content Include="Plaugs\bootstrap-validator\src\js\language\fa_IR.js" />
+    <Content Include="Plaugs\bootstrap-validator\src\js\language\fr_FR.js" />
+    <Content Include="Plaugs\bootstrap-validator\src\js\language\gr_EL.js" />
+    <Content Include="Plaugs\bootstrap-validator\src\js\language\he_IL.js" />
+    <Content Include="Plaugs\bootstrap-validator\src\js\language\hu_HU.js" />
+    <Content Include="Plaugs\bootstrap-validator\src\js\language\id_ID.js" />
+    <Content Include="Plaugs\bootstrap-validator\src\js\language\it_IT.js" />
+    <Content Include="Plaugs\bootstrap-validator\src\js\language\ja_JP.js" />
+    <Content Include="Plaugs\bootstrap-validator\src\js\language\nl_NL.js" />
+    <Content Include="Plaugs\bootstrap-validator\src\js\language\no_NO.js" />
+    <Content Include="Plaugs\bootstrap-validator\src\js\language\pl_PL.js" />
+    <Content Include="Plaugs\bootstrap-validator\src\js\language\pt_BR.js" />
+    <Content Include="Plaugs\bootstrap-validator\src\js\language\pt_PT.js" />
+    <Content Include="Plaugs\bootstrap-validator\src\js\language\ro_RO.js" />
+    <Content Include="Plaugs\bootstrap-validator\src\js\language\ru_RU.js" />
+    <Content Include="Plaugs\bootstrap-validator\src\js\language\sq_AL.js" />
+    <Content Include="Plaugs\bootstrap-validator\src\js\language\sr_RS.js" />
+    <Content Include="Plaugs\bootstrap-validator\src\js\language\sv_SE.js" />
+    <Content Include="Plaugs\bootstrap-validator\src\js\language\th_TH.js" />
+    <Content Include="Plaugs\bootstrap-validator\src\js\language\tr_TR.js" />
+    <Content Include="Plaugs\bootstrap-validator\src\js\language\ua_UA.js" />
+    <Content Include="Plaugs\bootstrap-validator\src\js\language\vi_VN.js" />
+    <Content Include="Plaugs\bootstrap-validator\src\js\language\zh_CN.js" />
+    <Content Include="Plaugs\bootstrap-validator\src\js\language\zh_TW.js" />
+    <Content Include="Plaugs\bootstrap-validator\src\js\validator\base64.js" />
+    <Content Include="Plaugs\bootstrap-validator\src\js\validator\between.js" />
+    <Content Include="Plaugs\bootstrap-validator\src\js\validator\blank.js" />
+    <Content Include="Plaugs\bootstrap-validator\src\js\validator\callback.js" />
+    <Content Include="Plaugs\bootstrap-validator\src\js\validator\choice.js" />
+    <Content Include="Plaugs\bootstrap-validator\src\js\validator\color.js" />
+    <Content Include="Plaugs\bootstrap-validator\src\js\validator\creditCard.js" />
+    <Content Include="Plaugs\bootstrap-validator\src\js\validator\cusip.js" />
+    <Content Include="Plaugs\bootstrap-validator\src\js\validator\cvv.js" />
+    <Content Include="Plaugs\bootstrap-validator\src\js\validator\date.js" />
+    <Content Include="Plaugs\bootstrap-validator\src\js\validator\different.js" />
+    <Content Include="Plaugs\bootstrap-validator\src\js\validator\digits.js" />
+    <Content Include="Plaugs\bootstrap-validator\src\js\validator\ean.js" />
+    <Content Include="Plaugs\bootstrap-validator\src\js\validator\emailAddress.js" />
+    <Content Include="Plaugs\bootstrap-validator\src\js\validator\file.js" />
+    <Content Include="Plaugs\bootstrap-validator\src\js\validator\greaterThan.js" />
+    <Content Include="Plaugs\bootstrap-validator\src\js\validator\grid.js" />
+    <Content Include="Plaugs\bootstrap-validator\src\js\validator\hex.js" />
+    <Content Include="Plaugs\bootstrap-validator\src\js\validator\hexColor.js" />
+    <Content Include="Plaugs\bootstrap-validator\src\js\validator\iban.js" />
+    <Content Include="Plaugs\bootstrap-validator\src\js\validator\id.js" />
+    <Content Include="Plaugs\bootstrap-validator\src\js\validator\identical.js" />
+    <Content Include="Plaugs\bootstrap-validator\src\js\validator\imei.js" />
+    <Content Include="Plaugs\bootstrap-validator\src\js\validator\imo.js" />
+    <Content Include="Plaugs\bootstrap-validator\src\js\validator\integer.js" />
+    <Content Include="Plaugs\bootstrap-validator\src\js\validator\ip.js" />
+    <Content Include="Plaugs\bootstrap-validator\src\js\validator\isbn.js" />
+    <Content Include="Plaugs\bootstrap-validator\src\js\validator\isin.js" />
+    <Content Include="Plaugs\bootstrap-validator\src\js\validator\ismn.js" />
+    <Content Include="Plaugs\bootstrap-validator\src\js\validator\issn.js" />
+    <Content Include="Plaugs\bootstrap-validator\src\js\validator\lessThan.js" />
+    <Content Include="Plaugs\bootstrap-validator\src\js\validator\mac.js" />
+    <Content Include="Plaugs\bootstrap-validator\src\js\validator\meid.js" />
+    <Content Include="Plaugs\bootstrap-validator\src\js\validator\notEmpty.js" />
+    <Content Include="Plaugs\bootstrap-validator\src\js\validator\numeric.js" />
+    <Content Include="Plaugs\bootstrap-validator\src\js\validator\phone.js" />
+    <Content Include="Plaugs\bootstrap-validator\src\js\validator\regexp.js" />
+    <Content Include="Plaugs\bootstrap-validator\src\js\validator\remote.js" />
+    <Content Include="Plaugs\bootstrap-validator\src\js\validator\rtn.js" />
+    <Content Include="Plaugs\bootstrap-validator\src\js\validator\sedol.js" />
+    <Content Include="Plaugs\bootstrap-validator\src\js\validator\siren.js" />
+    <Content Include="Plaugs\bootstrap-validator\src\js\validator\siret.js" />
+    <Content Include="Plaugs\bootstrap-validator\src\js\validator\step.js" />
+    <Content Include="Plaugs\bootstrap-validator\src\js\validator\stringCase.js" />
+    <Content Include="Plaugs\bootstrap-validator\src\js\validator\stringLength.js" />
+    <Content Include="Plaugs\bootstrap-validator\src\js\validator\uri.js" />
+    <Content Include="Plaugs\bootstrap-validator\src\js\validator\uuid.js" />
+    <Content Include="Plaugs\bootstrap-validator\src\js\validator\vat.js" />
+    <Content Include="Plaugs\bootstrap-validator\src\js\validator\vin.js" />
+    <Content Include="Plaugs\bootstrap-validator\src\js\validator\zipCode.js" />
+    <Content Include="Plaugs\bootstrap-validator\test\index.html" />
+    <Content Include="Plaugs\bootstrap-validator\test\spec.js" />
+    <Content Include="Plaugs\bootstrap-validator\test\spec\api.js" />
+    <Content Include="Plaugs\bootstrap-validator\test\spec\autoFocus.js" />
+    <Content Include="Plaugs\bootstrap-validator\test\spec\container.js" />
+    <Content Include="Plaugs\bootstrap-validator\test\spec\dynamic.js" />
+    <Content Include="Plaugs\bootstrap-validator\test\spec\enable.js" />
+    <Content Include="Plaugs\bootstrap-validator\test\spec\event.js" />
+    <Content Include="Plaugs\bootstrap-validator\test\spec\excluded.js" />
+    <Content Include="Plaugs\bootstrap-validator\test\spec\group.js" />
+    <Content Include="Plaugs\bootstrap-validator\test\spec\i18n.js" />
+    <Content Include="Plaugs\bootstrap-validator\test\spec\message.js" />
+    <Content Include="Plaugs\bootstrap-validator\test\spec\submit.js" />
+    <Content Include="Plaugs\bootstrap-validator\test\spec\validator\between.js" />
+    <Content Include="Plaugs\bootstrap-validator\test\spec\validator\callback.js" />
+    <Content Include="Plaugs\bootstrap-validator\test\spec\validator\color.js" />
+    <Content Include="Plaugs\bootstrap-validator\test\spec\validator\creditCard.js" />
+    <Content Include="Plaugs\bootstrap-validator\test\spec\validator\date.js" />
+    <Content Include="Plaugs\bootstrap-validator\test\spec\validator\ean.js" />
+    <Content Include="Plaugs\bootstrap-validator\test\spec\validator\emailAddress.js" />
+    <Content Include="Plaugs\bootstrap-validator\test\spec\validator\greaterThan.js" />
+    <Content Include="Plaugs\bootstrap-validator\test\spec\validator\iban.js" />
+    <Content Include="Plaugs\bootstrap-validator\test\spec\validator\id.js" />
+    <Content Include="Plaugs\bootstrap-validator\test\spec\validator\imo.js" />
+    <Content Include="Plaugs\bootstrap-validator\test\spec\validator\ip.js" />
+    <Content Include="Plaugs\bootstrap-validator\test\spec\validator\isbn.js" />
+    <Content Include="Plaugs\bootstrap-validator\test\spec\validator\isin.js" />
+    <Content Include="Plaugs\bootstrap-validator\test\spec\validator\ismn.js" />
+    <Content Include="Plaugs\bootstrap-validator\test\spec\validator\issn.js" />
+    <Content Include="Plaugs\bootstrap-validator\test\spec\validator\lessThan.js" />
+    <Content Include="Plaugs\bootstrap-validator\test\spec\validator\meid.js" />
+    <Content Include="Plaugs\bootstrap-validator\test\spec\validator\phone.js" />
+    <Content Include="Plaugs\bootstrap-validator\test\spec\validator\stringLength.js" />
+    <Content Include="Plaugs\bootstrap-validator\test\spec\validator\uri.js" />
+    <Content Include="Plaugs\bootstrap-validator\test\spec\validator\vat.js" />
+    <Content Include="Plaugs\bootstrap-validator\test\spec\validator\zipCode.js" />
+    <Content Include="Plaugs\bootstrap-validator\test\spec\verbose.js" />
+    <Content Include="Plaugs\bootstrap-validator\vendor\bootstrap\css\bootstrap-theme.css" />
+    <Content Include="Plaugs\bootstrap-validator\vendor\bootstrap\css\bootstrap-theme.min.css" />
+    <Content Include="Plaugs\bootstrap-validator\vendor\bootstrap\css\bootstrap.css" />
+    <Content Include="Plaugs\bootstrap-validator\vendor\bootstrap\css\bootstrap.min.css" />
+    <Content Include="Plaugs\bootstrap-validator\vendor\bootstrap\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Plaugs\bootstrap-validator\vendor\bootstrap\js\bootstrap.js" />
+    <Content Include="Plaugs\bootstrap-validator\vendor\bootstrap\js\bootstrap.min.js" />
+    <Content Include="Plaugs\bootstrap-validator\vendor\bootstrap\js\npm.js" />
+    <Content Include="Plaugs\bootstrap-validator\vendor\jasmine\boot.js" />
+    <Content Include="Plaugs\bootstrap-validator\vendor\jasmine\console.js" />
+    <Content Include="Plaugs\bootstrap-validator\vendor\jasmine\jasmine-html.js" />
+    <Content Include="Plaugs\bootstrap-validator\vendor\jasmine\jasmine.css" />
+    <Content Include="Plaugs\bootstrap-validator\vendor\jasmine\jasmine.js" />
+    <Content Include="Plaugs\bootstrap-validator\vendor\jasmine\jasmine_favicon.png" />
+    <Content Include="Plaugs\bootstrap-validator\vendor\jquery\jquery.min.js" />
+    <Content Include="Plaugs\summernote-0.8.8-dist\lang\summernote-ar-AR.js" />
+    <Content Include="Plaugs\summernote-0.8.8-dist\lang\summernote-bg-BG.js" />
+    <Content Include="Plaugs\summernote-0.8.8-dist\lang\summernote-ca-ES.js" />
+    <Content Include="Plaugs\summernote-0.8.8-dist\lang\summernote-cs-CZ.js" />
+    <Content Include="Plaugs\summernote-0.8.8-dist\lang\summernote-da-DK.js" />
+    <Content Include="Plaugs\summernote-0.8.8-dist\lang\summernote-de-DE.js" />
+    <Content Include="Plaugs\summernote-0.8.8-dist\lang\summernote-el-GR.js" />
+    <Content Include="Plaugs\summernote-0.8.8-dist\lang\summernote-es-ES.js" />
+    <Content Include="Plaugs\summernote-0.8.8-dist\lang\summernote-es-EU.js" />
+    <Content Include="Plaugs\summernote-0.8.8-dist\lang\summernote-fa-IR.js" />
+    <Content Include="Plaugs\summernote-0.8.8-dist\lang\summernote-fi-FI.js" />
+    <Content Include="Plaugs\summernote-0.8.8-dist\lang\summernote-fr-FR.js" />
+    <Content Include="Plaugs\summernote-0.8.8-dist\lang\summernote-gl-ES.js" />
+    <Content Include="Plaugs\summernote-0.8.8-dist\lang\summernote-he-IL.js" />
+    <Content Include="Plaugs\summernote-0.8.8-dist\lang\summernote-hr-HR.js" />
+    <Content Include="Plaugs\summernote-0.8.8-dist\lang\summernote-hu-HU.js" />
+    <Content Include="Plaugs\summernote-0.8.8-dist\lang\summernote-id-ID.js" />
+    <Content Include="Plaugs\summernote-0.8.8-dist\lang\summernote-it-IT.js" />
+    <Content Include="Plaugs\summernote-0.8.8-dist\lang\summernote-ja-JP.js" />
+    <Content Include="Plaugs\summernote-0.8.8-dist\lang\summernote-ko-KR.js" />
+    <Content Include="Plaugs\summernote-0.8.8-dist\lang\summernote-lt-LT.js" />
+    <Content Include="Plaugs\summernote-0.8.8-dist\lang\summernote-lt-LV.js" />
+    <Content Include="Plaugs\summernote-0.8.8-dist\lang\summernote-mn-MN.js" />
+    <Content Include="Plaugs\summernote-0.8.8-dist\lang\summernote-nb-NO.js" />
+    <Content Include="Plaugs\summernote-0.8.8-dist\lang\summernote-nl-NL.js" />
+    <Content Include="Plaugs\summernote-0.8.8-dist\lang\summernote-pl-PL.js" />
+    <Content Include="Plaugs\summernote-0.8.8-dist\lang\summernote-pt-BR.js" />
+    <Content Include="Plaugs\summernote-0.8.8-dist\lang\summernote-pt-PT.js" />
+    <Content Include="Plaugs\summernote-0.8.8-dist\lang\summernote-ro-RO.js" />
+    <Content Include="Plaugs\summernote-0.8.8-dist\lang\summernote-ru-RU.js" />
+    <Content Include="Plaugs\summernote-0.8.8-dist\lang\summernote-sk-SK.js" />
+    <Content Include="Plaugs\summernote-0.8.8-dist\lang\summernote-sl-SI.js" />
+    <Content Include="Plaugs\summernote-0.8.8-dist\lang\summernote-sr-RS-Latin.js" />
+    <Content Include="Plaugs\summernote-0.8.8-dist\lang\summernote-sr-RS.js" />
+    <Content Include="Plaugs\summernote-0.8.8-dist\lang\summernote-sv-SE.js" />
+    <Content Include="Plaugs\summernote-0.8.8-dist\lang\summernote-ta-IN.js" />
+    <Content Include="Plaugs\summernote-0.8.8-dist\lang\summernote-th-TH.js" />
+    <Content Include="Plaugs\summernote-0.8.8-dist\lang\summernote-tr-TR.js" />
+    <Content Include="Plaugs\summernote-0.8.8-dist\lang\summernote-uk-UA.js" />
+    <Content Include="Plaugs\summernote-0.8.8-dist\lang\summernote-vi-VN.js" />
+    <Content Include="Plaugs\summernote-0.8.8-dist\lang\summernote-zh-CN.js" />
+    <Content Include="Plaugs\summernote-0.8.8-dist\lang\summernote-zh-TW.js" />
+    <Content Include="Plaugs\summernote-0.8.8-dist\plugin\databasic\summernote-ext-databasic.css" />
+    <Content Include="Plaugs\summernote-0.8.8-dist\plugin\databasic\summernote-ext-databasic.js" />
+    <Content Include="Plaugs\summernote-0.8.8-dist\plugin\hello\summernote-ext-hello.js" />
+    <Content Include="Plaugs\summernote-0.8.8-dist\plugin\specialchars\summernote-ext-specialchars.js" />
+    <Content Include="Plaugs\summernote-0.8.8-dist\summernote-bs4.css" />
+    <Content Include="Plaugs\summernote-0.8.8-dist\summernote-bs4.js" />
+    <Content Include="Plaugs\summernote-0.8.8-dist\summernote-bs4.min.js" />
+    <Content Include="Plaugs\summernote-0.8.8-dist\summernote-lite.css" />
+    <Content Include="Plaugs\summernote-0.8.8-dist\summernote-lite.js" />
+    <Content Include="Plaugs\summernote-0.8.8-dist\summernote.css" />
+    <Content Include="Plaugs\summernote-0.8.8-dist\summernote.js" />
+    <Content Include="Plaugs\summernote-0.8.8-dist\summernote.min.js" />
+    <Content Include="Plaugs\Tree\tree.css" />
+    <Content Include="Plaugs\Tree\tree.js" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="关于系统.txt" />
+    <Content Include="GL.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Ashx\FileUpLoad.ashx.cs">
+      <DependentUpon>FileUpLoad.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Ashx\GM.ashx.cs">
+      <DependentUpon>GM.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Ashx\MasterPage.ashx.cs">
+      <DependentUpon>MasterPage.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Ashx\Login.ashx.cs">
+      <DependentUpon>Login.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Ashx\GMType.ashx.cs">
+      <DependentUpon>GMType.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Ashx\Role.ashx.cs">
+      <DependentUpon>Role.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Ashx\Dic.ashx.cs">
+      <DependentUpon>Dic.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Ashx\User.ashx.cs">
+      <DependentUpon>User.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Ashx\Menu.ashx.cs">
+      <DependentUpon>Menu.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Index.aspx.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Index.aspx.designer.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Manage\DicManage.aspx.cs">
+      <DependentUpon>DicManage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Manage\DicManage.aspx.designer.cs">
+      <DependentUpon>DicManage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Manage\GMTypeManage.aspx.cs">
+      <DependentUpon>GMTypeManage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Manage\GMTypeManage.aspx.designer.cs">
+      <DependentUpon>GMTypeManage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Manage\MyGMEdit.aspx.cs">
+      <DependentUpon>MyGMEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Manage\MyGMEdit.aspx.designer.cs">
+      <DependentUpon>MyGMEdit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Manage\MyGMManage.aspx.cs">
+      <DependentUpon>MyGMManage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Manage\MyGMManage.aspx.designer.cs">
+      <DependentUpon>MyGMManage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Manage\MenuManage.aspx.cs">
+      <DependentUpon>MenuManage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Manage\MenuManage.aspx.designer.cs">
+      <DependentUpon>MenuManage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Manage\RoleManage.aspx.cs">
+      <DependentUpon>RoleManage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Manage\RoleManage.aspx.designer.cs">
+      <DependentUpon>RoleManage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Manage\Regist.aspx.cs">
+      <DependentUpon>Regist.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Manage\Regist.aspx.designer.cs">
+      <DependentUpon>Regist.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Manage\Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Manage\Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Manage\UserManage.aspx.cs">
+      <DependentUpon>UserManage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Manage\UserManage.aspx.designer.cs">
+      <DependentUpon>UserManage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Site.Master.cs">
+      <DependentUpon>Site.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Site.Master.designer.cs">
+      <DependentUpon>Site.Master</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+    <Content Include="Plaugs\bootstrap-3.3.7-dist\css\bootstrap-theme.css.map" />
+    <Content Include="Plaugs\bootstrap-3.3.7-dist\css\bootstrap-theme.min.css.map" />
+    <Content Include="Plaugs\bootstrap-3.3.7-dist\css\bootstrap.css.map" />
+    <Content Include="Plaugs\bootstrap-3.3.7-dist\css\bootstrap.min.css.map" />
+    <Content Include="Plaugs\bootstrap-3.3.7-dist\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Plaugs\bootstrap-3.3.7-dist\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Plaugs\bootstrap-3.3.7-dist\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Plaugs\bootstrap-3.3.7-dist\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Site.Master" />
+    <Content Include="Ashx\Login.ashx" />
+    <Content Include="Ashx\MasterPage.ashx" />
+    <Content Include="Plaugs\bootstrap-treeview\jquery插件库.url" />
+    <Content Include="Plaugs\bootstrap-icheck\.gitignore" />
+    <Content Include="Plaugs\bootstrap-icheck\bower.json" />
+    <Content Include="Plaugs\bootstrap-icheck\CHANGELOG.md" />
+    <Content Include="Plaugs\bootstrap-icheck\demo\css\custom.styl" />
+    <Content Include="Plaugs\bootstrap-icheck\demo\css\montserrat-bold.eot" />
+    <Content Include="Plaugs\bootstrap-icheck\demo\css\montserrat-bold.ttf" />
+    <Content Include="Plaugs\bootstrap-icheck\demo\css\montserrat-bold.woff" />
+    <Content Include="Plaugs\bootstrap-icheck\demo\css\montserrat-regular.eot" />
+    <Content Include="Plaugs\bootstrap-icheck\demo\css\montserrat-regular.ttf" />
+    <Content Include="Plaugs\bootstrap-icheck\demo\css\montserrat-regular.woff" />
+    <Content Include="Plaugs\bootstrap-icheck\icheck.jquery.json" />
+    <Content Include="Plaugs\bootstrap-icheck\README.md" />
+    <Content Include="Plaugs\bootstrap-validator\.gitignore" />
+    <Content Include="Plaugs\bootstrap-validator\bootstrapValidator.jquery.json" />
+    <Content Include="Plaugs\bootstrap-validator\bower.json" />
+    <Content Include="Plaugs\bootstrap-validator\CHANGELOG.md" />
+    <Content Include="Plaugs\bootstrap-validator\CONTRIBUTORS.md" />
+    <Content Include="Plaugs\bootstrap-validator\demo\ajaxSubmit.php" />
+    <Content Include="Plaugs\bootstrap-validator\demo\remote.php" />
+    <Content Include="Plaugs\bootstrap-validator\demo\remote2.php" />
+    <Content Include="Plaugs\bootstrap-validator\demo\target.php" />
+    <Content Include="Plaugs\bootstrap-validator\package.json" />
+    <Content Include="Plaugs\bootstrap-validator\README.md" />
+    <Content Include="Plaugs\bootstrap-validator\vendor\bootstrap\css\bootstrap-theme.css.map" />
+    <Content Include="Plaugs\bootstrap-validator\vendor\bootstrap\css\bootstrap.css.map" />
+    <Content Include="Plaugs\bootstrap-validator\vendor\bootstrap\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Plaugs\bootstrap-validator\vendor\bootstrap\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Plaugs\bootstrap-validator\vendor\bootstrap\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Ashx\Menu.ashx" />
+    <Content Include="Ashx\User.ashx" />
+    <Content Include="Plaugs\bootstrap-datetimepicker-master\.gitattributes" />
+    <Content Include="Plaugs\bootstrap-datetimepicker-master\.gitignore" />
+    <Content Include="Plaugs\bootstrap-datetimepicker-master\.jshintrc" />
+    <Content Include="Plaugs\bootstrap-datetimepicker-master\.npmignore" />
+    <Content Include="Plaugs\bootstrap-datetimepicker-master\.travis.yml" />
+    <Content Include="Plaugs\bootstrap-datetimepicker-master\bower.json" />
+    <Content Include="Plaugs\bootstrap-datetimepicker-master\build\build.less" />
+    <Content Include="Plaugs\bootstrap-datetimepicker-master\build\build_standalone.less" />
+    <Content Include="Plaugs\bootstrap-datetimepicker-master\less\datetimepicker.less" />
+    <Content Include="Plaugs\bootstrap-datetimepicker-master\LICENSE" />
+    <Content Include="Plaugs\bootstrap-datetimepicker-master\minify.sh" />
+    <Content Include="Plaugs\bootstrap-datetimepicker-master\package.json" />
+    <Content Include="Plaugs\bootstrap-datetimepicker-master\README.md" />
+    <Content Include="Plaugs\bootstrap-datetimepicker-master\sample in bootstrap v3\bootstrap\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Plaugs\bootstrap-datetimepicker-master\sample in bootstrap v3\bootstrap\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Plaugs\bootstrap-datetimepicker-master\sample in bootstrap v3\bootstrap\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Plaugs\bootstrap-datetimepicker-master\tests\README.md" />
+    <Content Include="Ashx\Role.ashx" />
+    <Content Include="Ashx\Dic.ashx" />
+    <Content Include="Ashx\GMType.ashx" />
+    <Content Include="Ashx\GM.ashx" />
+    <Content Include="Plaugs\summernote-0.8.8-dist\font\summernote.eot" />
+    <Content Include="Plaugs\summernote-0.8.8-dist\font\summernote.ttf" />
+    <Content Include="Plaugs\summernote-0.8.8-dist\font\summernote.woff" />
+    <Content Include="Ashx\FileUpLoad.ashx" />
+    <None Include="Properties\PublishProfiles\MrLi_Pc_Local.pubxml" />
+    <None Include="Properties\PublishProfiles\MrLi_NotBook_Local.pubxml" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Imgs\Png\" />
+    <Folder Include="Pages\Show\" />
+    <Folder Include="Upload\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ML.Accounts\ML.Accounts.csproj">
+      <Project>{477f01ce-d802-4b6b-9888-bd3efece31d8}</Project>
+      <Name>ML.Accounts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ML.BLL\ML.BLL.csproj">
+      <Project>{6c59e839-d8a7-4dd5-9d6c-5b1d6d6ad4d7}</Project>
+      <Name>ML.BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ML.Common\ML.Common.csproj">
+      <Project>{7f830518-1098-4f5a-8843-01fbb3edc88b}</Project>
+      <Name>ML.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ML.Log4NetHelper\ML.Log4NetHelper.csproj">
+      <Project>{17b83194-9dcf-4d8b-8c70-c064714cd826}</Project>
+      <Name>ML.Log4NetHelper</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ML.Model\ML.Model.csproj">
+      <Project>{804CD6ED-D7C2-4596-8487-5F3CB054C3F4}</Project>
+      <Name>ML.Model</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>62319</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:62319/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Import Project="..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" />
+  <Target Name="EnsureBclBuildImported" BeforeTargets="BeforeBuild" Condition="'$(BclBuildImported)' == ''">
+    <Error Condition="!Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=317567." HelpKeyword="BCLBUILD2001" />
+    <Error Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="The build restored NuGet packages. Build the project again to include these packages in the build. For more information, see http://go.microsoft.com/fwlink/?LinkID=317568." HelpKeyword="BCLBUILD2002" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,40 @@
+﻿* {
+    margin:0px;
+    padding:0px;
+}
+body {
+    background: url('../../Imgs/Jpg/LoginBg1.jpg') no-repeat;
+    font-size: 14px;
+}
+
+.form {
+    background: rgba(255,255,255,0.2);
+    width:400px;
+    height:360px;
+    margin:20px auto;
+    margin-top:200px;
+}
+
+#login_form {
+    display: block;
+}
+
+#register_form {
+    display: none;
+}
+
+.fa {
+    display: inline-block;
+    top: 27px;
+    left: 6px;
+    position: relative;
+    color: #ccc;
+}
+
+input[type="text"], input[type="password"] {
+    padding-left: 26px;
+}
+
+.checkbox {
+    padding-left: 21px;
+}
